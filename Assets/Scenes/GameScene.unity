@@ -2157,7 +2157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd954602707f9041843ba6277b340c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 10
+  velocity: 7.5
+  anim: {fileID: 0}
+  state: 0
 --- !u!4 &472442678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4856850378500614, guid: c2eed62f1d00d94499f837cfb1e2c95a,
@@ -8111,6 +8113,32 @@ PrefabInstance:
     - target: {fileID: 4856850378500614, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95012814180350032, guid: c2eed62f1d00d94499f837cfb1e2c95a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 106c4c788dfd7ae499d5cdc485e8a1f7, type: 2}
+    - target: {fileID: 137754930165306484, guid: c2eed62f1d00d94499f837cfb1e2c95a,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470819468158936, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.038455736
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470819468158936, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0688379
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372689591400026, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.05566983
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372689591400026, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.02105633
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2eed62f1d00d94499f837cfb1e2c95a, type: 3}
