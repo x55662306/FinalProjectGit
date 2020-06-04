@@ -24,7 +24,7 @@ public class Target : MonoBehaviour
     {
         if(other.name == "Player")
         {
-            UIManagerGame.score += 10;
+            StaticVarible.score += 10;
             Destroy(targetTip);
             Destroy(gameObject);
         }

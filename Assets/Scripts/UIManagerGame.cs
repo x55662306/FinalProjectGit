@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIManagerGame: MonoBehaviour
 {
-    static public int score = 100;
-    public float time = 100;
     public Text scoreText;
     public Text timeText;
 
@@ -19,18 +17,14 @@ public class UIManagerGame: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countDown();
         displayUI();
     }
 
     void displayUI()
     {
-        scoreText.text = score.ToString();
-        timeText.text = Mathf.RoundToInt(time).ToString();
+        scoreText.text = StaticVarible.score.ToString();
+        timeText.text = Mathf.RoundToInt(StaticVarible.time).ToString();
     }
 
-    void countDown()
-    {
-        time -= Time.deltaTime;
-    }
+
 }

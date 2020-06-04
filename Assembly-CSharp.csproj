@@ -65,9 +65,11 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\StartGame.cs" />
+    <Compile Include="Assets\Scripts\StaticVarible.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\TargetTip.cs" />
     <Compile Include="Assets\Scripts\UIManagerGame.cs" />
+    <Compile Include="Assets\Scripts\UIManagerResult.cs" />
     <Compile Include="Assets\Scripts\UIManagerTitle.cs" />
     <Compile Include="Assets\Vandal 3d - Anime Style\Demo\Scripts\UIManager.cs" />
     <None Include="Assets\Vandal 3d - Anime Style\Advance Unlit Shader\Advance Unlit.shader" />
