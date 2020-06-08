@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    private GameObject[] spawners;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        spawn(Target.State.support);
     }
 
     // Update is called once per frame
@@ -27,7 +28,22 @@ public class GameManager : MonoBehaviour
 
     void gameOverCheck()
     {
-        if(StaticVarible.time < 0)
+        if (StaticVarible.time < 0)
             SceneManager.LoadScene("Result");
+    }
+
+    public void spawn(Target.State state)
+    {
+        while (true)
+        {
+            int i = Mathf.RoundToInt(Random.Range(0, spawners.Length));
+            Spawner spawner = spawners[i].GetComponent<Spawner>();
+            if (!spawner.getFull())
+            {
+                spawner.spawn(state);
+                spawner.setFull(true);
+                break;
+            }
+        }
     }
 }
