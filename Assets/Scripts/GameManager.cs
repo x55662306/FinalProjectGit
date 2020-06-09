@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject[] spawners;
+    public GameObject CasePrefabs;
 
+    private GameObject[] spawners;
+    
     // Start is called before the first frame update
     void Start()
     {
         spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        spawn(Target.State.support);
+        spawnCase(Case.State.support, "Hamburger", 10, -10);
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Result");
     }
 
-    public void spawn(Target.State state)
+    public void spawnCase(Case.State state, string type, int reward, int toxicity)
     {
         while (true)
         {
@@ -40,7 +42,8 @@ public class GameManager : MonoBehaviour
             Spawner spawner = spawners[i].GetComponent<Spawner>();
             if (!spawner.getFull())
             {
-                spawner.spawn(state);
+                GameObject mycase = Instantiate(CasePrefabs, spawners[i].transform.position, new Quaternion(0, 0, 0, 0));
+                mycase.GetComponent<Case>().SetInfo(state, type, reward, toxicity, spawners[i]);
                 spawner.setFull(true);
                 break;
             }

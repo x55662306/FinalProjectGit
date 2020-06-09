@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetTip : MonoBehaviour
+public class CaseTip : MonoBehaviour
 {
     private GameObject target;
     private GameObject player;
@@ -29,14 +29,14 @@ public class TargetTip : MonoBehaviour
                 this.transform.position = player.transform.position + vec.normalized * minimapRadius;
         }
     }
-    public void setTarget(GameObject g)
+    public void setTarget(GameObject target)
     {
-        target = g;
+        this.target = target;
     }
 
-    public void setSprite(string name)
+    public void setSprite(string type)
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/" + name);
+        spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/" + type);
     }
 }

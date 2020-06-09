@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject tartgetPrefabs;
-
     private bool full;
 
     // Start is called before the first frame update
@@ -19,14 +17,9 @@ public class Spawner : MonoBehaviour
         return full;
     }
 
-    public void setFull(bool b)
+    public void setFull(bool full)
     {
-        full = b;
+        this.full = full;
     }
 
-    public void spawn(Target.State state)
-    {
-        GameObject target = Instantiate(tartgetPrefabs, gameObject.transform.position, new Quaternion(0, 0, 0, 0));
-        target.GetComponent<Target>().SetState(state);
-    }
 }

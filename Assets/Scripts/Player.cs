@@ -5,13 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float velocity;
-
+    public int health;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 100;
     }
 
     // Update is called once per frame
@@ -25,5 +25,15 @@ public class Player : MonoBehaviour
             this.transform.position += Vector3.back * velocity * Time.deltaTime;
         if (Input.GetKey(KeyCode.D))
             this.transform.position += Vector3.right * velocity * Time.deltaTime;
+    }
+
+    public void AddHealth(int deltaHealth)
+    {
+        this.health += deltaHealth;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
