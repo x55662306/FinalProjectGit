@@ -23,6 +23,7 @@ public class CaseTip : MonoBehaviour
         {
             Vector3 vec = target.transform.position - player.transform.position;
             float dist = vec.magnitude;
+            transform.rotation = Quaternion.Euler(90, player.transform.rotation.eulerAngles.y, player.transform.rotation.eulerAngles.z);
             if (dist < minimapRadius)
                 this.transform.position = target.transform.position;
             else

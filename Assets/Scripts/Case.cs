@@ -18,7 +18,7 @@ public class Case : MonoBehaviour
     private GameObject player;
     private GameObject spawner;
     private int id;
-    private string name;
+    private string caseType;
     private int reward;
     private int toxicity;
     
@@ -29,7 +29,7 @@ public class Case : MonoBehaviour
     {
         targetTip = Instantiate(targetTipPrefab);
         targetTip.GetComponent<CaseTip>().setTarget(gameObject);
-        targetTip.GetComponent<CaseTip>().setSprite(name);
+        targetTip.GetComponent<CaseTip>().setSprite(caseType);
         gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("Player");
     }
@@ -69,7 +69,7 @@ public class Case : MonoBehaviour
     {
         this.state = state;
         this.id = CaseinfoLoader.caseInfoList[id].id;
-        this.name = CaseinfoLoader.caseInfoList[id].name; ;
+        this.caseType = CaseinfoLoader.caseInfoList[id].caseType;
         this.reward = CaseinfoLoader.caseInfoList[id].reward;
         this.toxicity = CaseinfoLoader.caseInfoList[id].toxicity;
         this.spawner = spawner;

@@ -1,1 +1,1 @@
-{"target":[{"id":0,"name":"Hamburger","reward":10,"toxicity":-10},{"id":1,"name":"Bread","reward":20,"toxicity":-20}]}
+{"target":[{"id":0,"caseType":"Hamburger","reward":10,"toxicity":-10},{"id":1,"caseType":"Bread","reward":20,"toxicity":-20}]}

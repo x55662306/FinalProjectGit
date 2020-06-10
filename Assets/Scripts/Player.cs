@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float velocity;
+    public float rotateVelocity;
     public int health;
 
 
@@ -18,13 +19,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
-            this.transform.position += Vector3.forward * velocity * Time.deltaTime;
+            this.transform.position += this.transform.forward * velocity * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
-            this.transform.position += Vector3.left * velocity * Time.deltaTime;
+            this.transform.Rotate(0, -rotateVelocity * Time.deltaTime, 0);
         if (Input.GetKey(KeyCode.S))
-            this.transform.position += Vector3.back * velocity * Time.deltaTime;
+            this.transform.position += -this.transform.forward * velocity * Time.deltaTime;
         if (Input.GetKey(KeyCode.D))
-            this.transform.position += Vector3.right * velocity * Time.deltaTime;
+            this.transform.Rotate(0, rotateVelocity * Time.deltaTime, 0);
     }
 
     public void AddHealth(int deltaHealth)

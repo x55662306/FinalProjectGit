@@ -10,7 +10,7 @@ public class UIManagerResult : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        textResult.text = "分數: " + StaticVarible.score.ToString();
+        textResult.text = StaticVarible.score.ToString();
     }
 
     // Update is called once per frame

@@ -10,20 +10,20 @@ public class CaseinfoLoader : MonoBehaviour
     public class CaseInfo
     {
         public int id;
-        public string name;
+        public string caseType;
         public int reward;
         public int toxicity;
-        public CaseInfo(int id, string name, int reward, int toxicity)
+        public CaseInfo(int id, string caseType, int reward, int toxicity)
         {
             this.id = id;
-            this.name = name;
+            this.caseType = caseType;
             this.reward = reward;
             this.toxicity = toxicity;
         }
 
         public void print()
         {
-            Debug.Log(name);
+            Debug.Log(caseType);
         }
     }
 
