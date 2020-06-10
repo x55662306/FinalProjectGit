@@ -6,6 +6,7 @@ public class StaticVarible : MonoBehaviour
 {
     static public int score = 100;
     static public float time = 30;
+    static public bool victory = false;
 
     // Start is called before the first frame update
     void Start()

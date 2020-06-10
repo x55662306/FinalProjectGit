@@ -9,12 +9,17 @@ public class GameManager : MonoBehaviour
     public GameObject CasePrefabs;
 
     private GameObject[] spawners;
-    
+    private Player playerScript;
+    private int targetScore;
+
     // Start is called before the first frame update
     void Start()
     {
         spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        spawnCase(Case.State.support, "Hamburger", 10, -10);
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        targetScore = 200;
+        int i = Mathf.RoundToInt(Random.Range(0, CaseinfoLoader.caseInfoList.Count));
+        spawnCase(Case.State.support, i);
     }
 
     // Update is called once per frame
@@ -30,11 +35,16 @@ public class GameManager : MonoBehaviour
 
     void gameOverCheck()
     {
-        if (StaticVarible.time < 0)
+        if (StaticVarible.time < 0 || playerScript.GetHealth() < 0)
             SceneManager.LoadScene("Result");
+        else if(StaticVarible.score>=targetScore)
+        {
+            StaticVarible.victory = true;
+            SceneManager.LoadScene("Result");
+        }
     }
 
-    public void spawnCase(Case.State state, string type, int reward, int toxicity)
+    public void spawnCase(Case.State state, int id)
     {
         while (true)
         {
@@ -43,7 +53,7 @@ public class GameManager : MonoBehaviour
             if (!spawner.getFull())
             {
                 GameObject mycase = Instantiate(CasePrefabs, spawners[i].transform.position, new Quaternion(0, 0, 0, 0));
-                mycase.GetComponent<Case>().SetInfo(state, type, reward, toxicity, spawners[i]);
+                mycase.GetComponent<Case>().SetInfo(state, id, spawners[i]);
                 spawner.setFull(true);
                 break;
             }

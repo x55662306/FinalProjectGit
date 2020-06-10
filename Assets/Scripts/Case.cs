@@ -17,9 +17,11 @@ public class Case : MonoBehaviour
     private GameObject gameManager;
     private GameObject player;
     private GameObject spawner;
-    private string type;
+    private int id;
+    private string name;
     private int reward;
     private int toxicity;
+    
 
 
     // Sart is called before the first frame update
@@ -27,7 +29,7 @@ public class Case : MonoBehaviour
     {
         targetTip = Instantiate(targetTipPrefab);
         targetTip.GetComponent<CaseTip>().setTarget(gameObject);
-        targetTip.GetComponent<CaseTip>().setSprite(type);
+        targetTip.GetComponent<CaseTip>().setSprite(name);
         gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("Player");
     }
@@ -42,7 +44,7 @@ public class Case : MonoBehaviour
     {
         if (other.name == "Player" && state == State.support)
         {
-            gameManager.GetComponent<GameManager>().spawnCase(State.recieve, type, reward, toxicity);
+            gameManager.GetComponent<GameManager>().spawnCase(State.recieve, id);
             spawner.GetComponent<Spawner>().setFull(false);
             Destroy(targetTip);
             Destroy(gameObject);
@@ -52,7 +54,7 @@ public class Case : MonoBehaviour
             StaticVarible.score += reward;
             player.GetComponent<Player>().AddHealth(toxicity);
             Destroy(targetTip);
-            gameManager.GetComponent<GameManager>().spawnCase(State.support, type, reward, toxicity);
+            gameManager.GetComponent<GameManager>().spawnCase(State.support, id);
             spawner.GetComponent<Spawner>().setFull(false);
             Destroy(gameObject);
         }
@@ -63,12 +65,13 @@ public class Case : MonoBehaviour
         this.state = state;
     }
 
-    public void SetInfo(State state, string type, int reward, int toxicity, GameObject spawner)
+    public void SetInfo(State state, int id, GameObject spawner)
     {
         this.state = state;
-        this.type = type;
-        this.reward = reward;
-        this.toxicity = toxicity;
+        this.id = CaseinfoLoader.caseInfoList[id].id;
+        this.name = CaseinfoLoader.caseInfoList[id].name; ;
+        this.reward = CaseinfoLoader.caseInfoList[id].reward;
+        this.toxicity = CaseinfoLoader.caseInfoList[id].toxicity;
         this.spawner = spawner;
     }
 }
