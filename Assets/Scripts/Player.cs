@@ -12,13 +12,13 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        health = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.E))
             this.transform.position += this.transform.forward * velocity * Time.deltaTime;
         if (Input.GetKey(KeyCode.A))
             this.transform.Rotate(0, -rotateVelocity * Time.deltaTime, 0);
@@ -36,5 +36,10 @@ public class Player : MonoBehaviour
     public int GetHealth()
     {
         return health;
+    }
+
+    public void SetHealth(int health)
+    {
+        this.health = health;
     }
 }
