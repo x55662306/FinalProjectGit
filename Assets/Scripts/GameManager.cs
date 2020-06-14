@@ -18,8 +18,7 @@ public class GameManager : MonoBehaviour
         spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         setTargetScore();
-        int i = Mathf.RoundToInt(Random.Range(0, CaseinfoLoader.caseInfoList.Count));
-        spawnCase(Case.State.support, i);
+        spawnRandomCase(Case.State.support);
     }
 
     // Update is called once per frame
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
         return targetScore;
     }
 
-    public void spawnCase(Case.State state, int id)
+    public void spawnSpecificCase(Case.State state, int id)
     {
         while (true)
         {
@@ -79,5 +78,11 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void spawnRandomCase(Case.State state)
+    {
+        int i = Mathf.RoundToInt(Random.Range(0, CaseinfoLoader.caseInfoList.Count));
+        spawnSpecificCase(state, i);
     }
 }

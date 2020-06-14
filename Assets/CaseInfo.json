@@ -1,1 +1,12 @@
-{"target":[{"id":0,"caseType":"Hamburger","reward":10,"toxicity":-10},{"id":1,"caseType":"Bread","reward":20,"toxicity":-20}]}
+{"target":[	{"id":0,"caseType":"Hamburger","reward":10,"toxicity":-4},
+			{"id":1,"caseType":"Bread","reward":20,"toxicity":-8},
+			{"id":2,"caseType":"Donuts","reward":30,"toxicity":-8},
+			{"id":3,"caseType":"Coronavirus","reward":100,"toxicity":-30},
+			{"id":4,"caseType":"Apple","reward":50,"toxicity":-10},
+			{"id":5,"caseType":"Ice-cream","reward":40,"toxicity":-16}, 
+			{"id":5,"caseType":"Ice-cream","reward":40,"toxicity":-16},
+			{"id":6,"caseType":"Fish","reward":20,"toxicity":-14}, 
+			{"id":7,"caseType":"Juice","reward":10,"toxicity":0},
+			{"id":8,"caseType":"Meat","reward":30,"toxicity":-20}, 
+			{"id":8,"caseType":"Bat","reward":10,"toxicity":-20},
+			{"id":9,"caseType":"Chicken","reward":10,"toxicity":-20}]}

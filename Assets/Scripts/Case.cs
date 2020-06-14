@@ -27,9 +27,6 @@ public class Case : MonoBehaviour
     // Sart is called before the first frame update
     void Start()
     {
-        targetTip = Instantiate(targetTipPrefab);
-        targetTip.GetComponent<CaseTip>().setTarget(gameObject);
-        targetTip.GetComponent<CaseTip>().setSprite(caseType);
         gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("Player");
     }
@@ -44,7 +41,7 @@ public class Case : MonoBehaviour
     {
         if (other.name == "Player" && state == State.support)
         {
-            gameManager.GetComponent<GameManager>().spawnCase(State.recieve, id);
+            gameManager.GetComponent<GameManager>().spawnSpecificCase(State.recieve, id);
             spawner.GetComponent<Spawner>().setFull(false);
             Destroy(targetTip);
             Destroy(gameObject);
@@ -54,7 +51,7 @@ public class Case : MonoBehaviour
             StaticVarible.score += reward;
             player.GetComponent<Player>().AddHealth(toxicity*StaticVarible.diffculty);
             Destroy(targetTip);
-            gameManager.GetComponent<GameManager>().spawnCase(State.support, id);
+            gameManager.GetComponent<GameManager>().spawnRandomCase(State.support);
             spawner.GetComponent<Spawner>().setFull(false);
             Destroy(gameObject);
         }
@@ -68,10 +65,18 @@ public class Case : MonoBehaviour
     public void SetInfo(State state, int id, GameObject spawner)
     {
         this.state = state;
-        this.id = CaseinfoLoader.caseInfoList[id].id;
+        this.id = id;
         this.caseType = CaseinfoLoader.caseInfoList[id].caseType;
         this.reward = CaseinfoLoader.caseInfoList[id].reward;
         this.toxicity = CaseinfoLoader.caseInfoList[id].toxicity;
         this.spawner = spawner;
+        CreateTip();
+    }
+
+    private void CreateTip()
+    {
+        targetTip = Instantiate(targetTipPrefab);
+        targetTip.GetComponent<CaseTip>().setTarget(gameObject);
+        targetTip.GetComponent<CaseTip>().setSprite(caseType);
     }
 }
