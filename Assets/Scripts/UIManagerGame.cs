@@ -8,6 +8,7 @@ public class UIManagerGame: MonoBehaviour
     public Text scoreText;
     public Text timeText;
     public Text healthText;
+    public GameManager gamemanager;
 
     private Player playerScript;
 
@@ -15,6 +16,7 @@ public class UIManagerGame: MonoBehaviour
     void Start()
     {
         playerScript = GameObject.Find("Player").GetComponent<Player>();
+        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class UIManagerGame: MonoBehaviour
 
     void displayUI()
     {
-        scoreText.text = StaticVarible.score.ToString();
+        scoreText.text = StaticVarible.score.ToString() + " / " + gamemanager.getTartgetScore().ToString();
         timeText.text = Mathf.RoundToInt(StaticVarible.time).ToString();
         healthText.text = playerScript.GetHealth().ToString();
     }

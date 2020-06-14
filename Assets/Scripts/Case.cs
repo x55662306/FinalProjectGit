@@ -52,7 +52,7 @@ public class Case : MonoBehaviour
         else if (other.name == "Player" && state == State.recieve)
         {
             StaticVarible.score += reward;
-            player.GetComponent<Player>().AddHealth(toxicity);
+            player.GetComponent<Player>().AddHealth(toxicity*StaticVarible.diffculty);
             Destroy(targetTip);
             gameManager.GetComponent<GameManager>().spawnCase(State.support, id);
             spawner.GetComponent<Spawner>().setFull(false);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StaticVarible : MonoBehaviour
 {
-    static public int score = 100;
-    static public float time = 30;
+    static public int score = 0;
+    static public float time = 60;
     static public bool victory = false;
+    static public int diffculty;
 
     // Start is called before the first frame update
     void Start()

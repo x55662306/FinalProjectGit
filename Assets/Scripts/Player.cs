@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        health = 10;
+        health = 100;
     }
 
     // Update is called once per frame

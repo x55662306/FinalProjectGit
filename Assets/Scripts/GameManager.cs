@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-        targetScore = 200;
+        setTargetScore();
         int i = Mathf.RoundToInt(Random.Range(0, CaseinfoLoader.caseInfoList.Count));
         spawnCase(Case.State.support, i);
     }
@@ -37,11 +37,32 @@ public class GameManager : MonoBehaviour
     {
         if (StaticVarible.time < 0 || playerScript.GetHealth() < 0)
             SceneManager.LoadScene("Result");
-        else if(StaticVarible.score>=targetScore)
+        else if (StaticVarible.score >= targetScore)
         {
             StaticVarible.victory = true;
             SceneManager.LoadScene("Result");
         }
+    }
+
+    private void setTargetScore()
+    {
+        switch (StaticVarible.diffculty)
+        {
+            case 0:
+                targetScore = 100;
+                break;
+            case 1:
+                targetScore = 200;
+                break;
+            case 2:
+                targetScore = 300;
+                break;
+        }
+    }
+
+    public int getTartgetScore()
+    {
+        return targetScore;
     }
 
     public void spawnCase(Case.State state, int id)
