@@ -78,7 +78,9 @@ public class CaseinfoLoader : MonoBehaviour
 
     private void Awake()
     {
-        string jsonInfo = File.ReadAllText("Assets/CaseInfo.json");
+        string filePath = Application.dataPath + "/StreamingAssets";
+        string nameAndPath = filePath + "/" + "CaseInfo.json";//存檔的位置加檔名
+        string jsonInfo = File.ReadAllText(nameAndPath);
         caseInfoList = JsonUtility.FromJson<Serialization<CaseInfo>>(jsonInfo).ToList();
     }
 }

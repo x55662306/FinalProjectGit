@@ -14,6 +14,7 @@ public class VideoStream : MonoBehaviour
     void Start()
     {
         StartCoroutine(PlayVideo());
+        rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 
     IEnumerator PlayVideo()
