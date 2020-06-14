@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\UIManagerGame.cs" />
     <Compile Include="Assets\Scripts\UIManagerResult.cs" />
     <Compile Include="Assets\Scripts\UIManagerTitle.cs" />
+    <Compile Include="Assets\Scripts\VideoStream.cs" />
     <Compile Include="Assets\Vandal 3d - Anime Style\Demo\Scripts\UIManager.cs" />
     <None Include="Assets\Vandal 3d - Anime Style\Advance Unlit Shader\Advance Unlit.shader" />
     <None Include="Assets\Vandal 3d - Anime Style\ReadMe!.txt" />
