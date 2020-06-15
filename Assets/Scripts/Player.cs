@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Animator anim;
     public float velocity;
     public float rotateVelocity;
+    public float moveSpeed;
     public int health;
     public int state = 0;
 
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         state = 0;
+        float mouseX = Input.GetAxis("Mouse X") * moveSpeed;
+        float mouseY = Input.GetAxis("Mouse Y") * moveSpeed;
+        //Camera.main.transform.localRotation = Camera.main.transform.localRotation * Quaternion.Euler(-mouseY, 0, 0);
+        transform.localRotation = transform.localRotation * Quaternion.Euler(0, mouseX, 0);
         if (Input.GetKey(KeyCode.W))
         {
             this.transform.position += this.transform.forward * velocity * Time.deltaTime;
@@ -28,7 +33,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Rotate(0, -rotateVelocity * Time.deltaTime, 0);
+            this.transform.position += -this.transform.right * velocity * Time.deltaTime;
+            state = 1;
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -37,7 +43,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Rotate(0, rotateVelocity * Time.deltaTime, 0);
+            this.transform.position += this.transform.right * velocity * Time.deltaTime;
+            state = 1;
         }
         anim.SetInteger("State", state);
     }
