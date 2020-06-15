@@ -810,6 +810,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   velocity: 10
   rotateVelocity: 50
+  moveSpeed: 10
   health: 0
   state: 0
 --- !u!4 &472442678 stripped
