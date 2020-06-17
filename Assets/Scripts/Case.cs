@@ -44,7 +44,7 @@ public class Case : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player" && state == State.support && spawner.GetComponent<Spawner>().getFull())
+        if (other.name == "Player" && state == State.support && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
             gameManager.GetComponent<GameManager>().spawnSpecificCase(State.recieve, id);
             spawner.GetComponent<Spawner>().setFull(false);
@@ -52,7 +52,7 @@ public class Case : MonoBehaviour
             action = 2;
             playerScript.SetAction(2);
         }
-        else if (other.name == "Player" && state == State.recieve && spawner.GetComponent<Spawner>().getFull())
+        else if (other.name == "Player" && state == State.recieve && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
             StaticVarible.time += 15;
             StaticVarible.score += reward;
