@@ -39,7 +39,15 @@ public class Case : MonoBehaviour
     {
         anim.SetInteger("action", action);
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Over"))
+        {
+            if(state == State.support)
+            {
+                player.GetComponent<Player>().AddHealth(toxicity * StaticVarible.diffculty);
+                StaticVarible.time += 15;
+                StaticVarible.score += reward;
+            }
             Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,20 +56,17 @@ public class Case : MonoBehaviour
         {
             gameManager.GetComponent<GameManager>().spawnSpecificCase(State.recieve, id);
             spawner.GetComponent<Spawner>().setFull(false);
-            Destroy(targetTip);
-            action = 2;
             playerScript.SetAction(2);
+            action = 2;
+            Destroy(targetTip);
         }
         else if (other.name == "Player" && state == State.recieve && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
-            StaticVarible.time += 15;
-            StaticVarible.score += reward;
-            player.GetComponent<Player>().AddHealth(toxicity*StaticVarible.diffculty);
-            Destroy(targetTip);
             gameManager.GetComponent<GameManager>().spawnRandomCase(State.support);
             spawner.GetComponent<Spawner>().setFull(false);
             action = 1;
             playerScript.SetAction(3);
+            Destroy(targetTip);
         }
     }
 
