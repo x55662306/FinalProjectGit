@@ -40,8 +40,9 @@ public class Case : MonoBehaviour
         anim.SetInteger("action", action);
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Over"))
         {
-            if(state == State.support)
+            if(state == State.recieve)
             {
+                print("hello\n");
                 player.GetComponent<Player>().AddHealth(toxicity * StaticVarible.diffculty);
                 StaticVarible.time += 15;
                 StaticVarible.score += reward;
@@ -54,6 +55,7 @@ public class Case : MonoBehaviour
     {
         if (other.name == "Player" && state == State.support && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
+            this.transform.LookAt(other.transform);
             gameManager.GetComponent<GameManager>().spawnSpecificCase(State.recieve, id);
             spawner.GetComponent<Spawner>().setFull(false);
             playerScript.SetAction(2);
@@ -62,6 +64,7 @@ public class Case : MonoBehaviour
         }
         else if (other.name == "Player" && state == State.recieve && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
+            this.transform.LookAt(other.transform);
             gameManager.GetComponent<GameManager>().spawnRandomCase(State.support);
             spawner.GetComponent<Spawner>().setFull(false);
             action = 1;
