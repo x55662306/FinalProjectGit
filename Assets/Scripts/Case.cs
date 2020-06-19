@@ -42,7 +42,6 @@ public class Case : MonoBehaviour
         {
             if(state == State.recieve)
             {
-                print("hello\n");
                 player.GetComponent<Player>().AddHealth(toxicity * StaticVarible.diffculty);
                 StaticVarible.time += 15;
                 StaticVarible.score += reward;
@@ -65,7 +64,7 @@ public class Case : MonoBehaviour
         else if (other.name == "Player" && state == State.recieve && anim.GetCurrentAnimatorStateInfo(0).IsName("Stand"))
         {
             this.transform.LookAt(other.transform);
-            gameManager.GetComponent<GameManager>().spawnRandomCase(State.support);
+            //gameManager.GetComponent<GameManager>().spawnRandomCase(State.support);
             spawner.GetComponent<Spawner>().setFull(false);
             action = 1;
             playerScript.SetAction(3);

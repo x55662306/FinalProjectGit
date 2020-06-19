@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         setTargetScore();
-        spawnRandomCase(Case.State.support);
+        StartCoroutine(spawnRandomCaseRepeat(Case.State.support, 10));
     }
 
     // Update is called once per frame
@@ -77,6 +77,15 @@ public class GameManager : MonoBehaviour
                 spawner.setFull(true);
                 break;
             }
+        }
+    }
+
+    IEnumerator spawnRandomCaseRepeat(Case.State state, float rateRepeat)
+    {
+        while (true)
+        {
+            spawnRandomCase(state);
+            yield return new WaitForSeconds(rateRepeat);
         }
     }
 
